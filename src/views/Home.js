@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 // import shoes from "../assests/shoes.png"
 import shoes from "../assests/hero-background.jpeg"
 import Products from './Products'
+import About from './About'
 
 const Home = () => {
   return (
@@ -15,15 +15,13 @@ const Home = () => {
                         <h5>Perfect Pairs, Every Step</h5>
                         <h1>Comfy Style: Your Shoe Stop</h1>
                         <p className='text-white'>Welcome to FootwearFusion, where style meets comfort. Explore our curated shoe collection for every occasion. Step confidently in comfort and style.</p>
-                        <div className="action-btn mt-4">
-                            <Link to="/" className='btn-secondary'>Explore Now</Link>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <Products />
-    
+        <About />
     </>
   )
 }

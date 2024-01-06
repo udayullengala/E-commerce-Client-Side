@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = () => {
+  const navigate = useNavigate()
   return (
     <>
         <div className='product_card'>
-          <Link to="/product_detail/" className='text-primary-color'>
+          <div onClick={() => navigate('/product_detail/')} className='text-primary-color cursor-pointer'>
             <div className='img position-relative overflow-hidden'>
                 <img className='w-100' src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-product-image-003-400x400.jpg" />
                 <a className='btn-secondary addToCartBtn d-block text-center' style={{position: 'absolute', width: '100%', bottom: '-50px', left: '0px', transition: '0.3s'}}>
@@ -19,7 +20,7 @@ const ProductCard = () => {
                     <span className='fw-medium'>$499</span>
                 </div>
             </div>
-          </Link>
+          </div>
         </div>
     </>
   )

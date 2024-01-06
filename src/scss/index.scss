@@ -1,9 +1,7 @@
 @import "variables/variables.scss";
 @import "home.scss";
 
-$primary-color:  #1d1d1d;
-$secondary-color: #f6aa28;
-$tertiary-color: #979a9b;
+
 
 .text-primary-color {
     color: $primary-color !important;
@@ -17,7 +15,7 @@ $tertiary-color: #979a9b;
     color: $tertiary-color !important;
 }
 
-.text-white {
+.text-white-color {
     color: $white !important;
 }
 
@@ -90,42 +88,42 @@ a {
 
 .btn-main {
     padding: 10px 25px;
-    background-color: $primary-color ;
+    background-color: $secondary-color;
     color: $white;
     transition: .3s ease;
     font-weight: 500;
-    border: 1px solid #1d1d1d;
+    border: 1px solid $secondary-color;
     cursor: pointer;
 }
 
 .btn-secondary {
     padding: 10px 25px;
     background-color: $white;
-    color: $primary-color;
+    color: $secondary-color;
     transition: .3s ease;
     font-weight: 500;
-    border: 1px solid #1d1d1d;
+    border: 1px solid $secondary-color;
     cursor: pointer;
 }
 
 .addToCartBtn {
     padding: 5px 20px;
-    background-color: $primary-color;
+    background-color: $secondary-color;
     color: $white;
     transition: .3s ease;
     font-weight: 500;
 }
 
 .btn-secondary:hover {
-    background-color:  $primary-color;
+    background-color:  $secondary-color;
     color: $white;
-    border: 1px solid $primary-color;
+    border: 1px solid $secondary-color;
 }
 
 .btn-main:hover {
     background-color: $white;
-    color: $primary-color;
-    border: 1px solid $primary-color;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
 }
 
 .link-view {
@@ -141,4 +139,8 @@ a {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.navbar-nav a {
+    color: $secondary-color !important;
 }
