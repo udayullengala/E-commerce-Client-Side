@@ -4,8 +4,7 @@ import ProductDetailPage from "../views/ProductDetailPage";
 import SignUp from "../views/SignUp";
 import Cart from "../views/CartPage";
 import About from "../views/About";
-import Collections from "../views/Collections";
-import CollectionType from "../views/CollectionType";
+import Shop from "./Collections";
 
 export const AppRoutes = [
     {
@@ -52,14 +51,14 @@ export const AppRoutes = [
     },
     {
         path: "/collections/",
-        element: <Collections />,
+        element: <Shop />,
         meta: {
             isPrivate: false
         }
     },
     {
-        path: "/collections/:gender/",
-        element: <CollectionType />,
+        path: "className=:gender/",
+        element: <Shop />,
         meta: {
             isPrivate: false
         }

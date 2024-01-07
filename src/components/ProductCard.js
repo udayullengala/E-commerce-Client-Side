@@ -1,23 +1,30 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../utils'
+import { toast } from 'react-toastify'
 
-const ProductCard = () => {
+const ProductCard = ({ data }) => {
   const navigate = useNavigate()
+  const isStock =  data?.quntity > 0 ? true : false
   return (
     <>
         <div className='product_card'>
-          <div onClick={() => navigate('/product_detail/')} className='text-primary-color cursor-pointer'>
+          <div onClick={() => {
+              isStock ? navigate(`/product_detail/${data?.id}`) : toast.warn(`${data?.name} is out of stock`)
+            }} className='text-primary-color cursor-pointer'>
             <div className='img position-relative overflow-hidden'>
-                <img className='w-100' src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-product-image-003-400x400.jpg" />
+                <img className='w-100' src={`${BASE_URL}${data?.image}`} />
                 <a className='btn-secondary addToCartBtn d-block text-center' style={{position: 'absolute', width: '100%', bottom: '-50px', left: '0px', transition: '0.3s'}}>
-                    Add To Cart
+                  {
+                    isStock ? "View" : "Out Of Stock"
+                  }
                 </a>
             </div>
             <div className='text-center p-2'>
-              <h6 className='fw-bold'>Women’s Blue Training</h6>
+              <h6 className='fw-bold'>{data?.name}</h6>
                 <div className='price d-flex justify-content-center align-items-center gap-1 pb-2'>
-                    <del className='text-tertiary-color'>$999</del>
-                    <span className='fw-medium'>$499</span>
+                    <del className='text-tertiary-color'>${data?.orginal_price}</del>
+                    <span className='fw-medium'>${data?.discounted_price}</span>
                 </div>
             </div>
           </div>

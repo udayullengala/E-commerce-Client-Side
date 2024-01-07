@@ -3,10 +3,18 @@ import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
 import { removeToken } from '../utils';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 
     const navigate = useNavigate()
+    const cartItems = useSelector((state) => {
+        return state.cartItems.length > 0 ? state.cartItems.reduce((total, item) => {
+            return total + (item.quantity || 0);
+        }, 0) : 0
+    })
+
+    console.log(cartItems)
     
     return (
         <>
@@ -26,8 +34,8 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/shop/">
-                                    Shop
+                                <Link className="nav-link active" to="/collections/">
+                                    Collections
                                 </Link>
                                 
                             </li>
@@ -52,8 +60,15 @@ const Navbar = () => {
                         <ul className="navbar-nav gap-2">
                             
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/cart/">
+                                <Link className="nav-link active position-relative" to="/cart/">
                                     <FiShoppingCart size={"18px"} />
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary-color">
+                                        {/* {cartItems.length > 0 ? cartItems.reduce((total, num) => {
+                                            return total?.quantity - num?.quantity
+                                        }) : 0} */}
+                                        {cartItems}
+                                    </span>
+
                                 </Link>
                                 
                             </li>
@@ -64,11 +79,15 @@ const Navbar = () => {
                                             Account
                                         </Link>
                                     </li>
-                                    <li><a className="dropdown-item cursor-pointer" onClick={() => {
-                                        removeToken();
-                                        toast.success("Logged out!")
-                                        navigate("/account/")
-                                    }}>Logout</a></li>
+                                    <li>
+                                        <a className="dropdown-item cursor-pointer" onClick={() => {
+                                            removeToken();
+                                            toast.success("Logged out!")
+                                            navigate("/account/")
+                                        }}>
+                                            Logout
+                                        </a>
+                                    </li>
                                 </ul>
                                 <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <FiUser size={"18px"} />

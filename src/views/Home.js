@@ -1,8 +1,8 @@
 import React from 'react'
 // import shoes from "../assests/shoes.png"
 import shoes from "../assests/hero-background.jpeg"
-import Products from './Products'
 import About from './About'
+import ProductSection from '../components/ProductSection'
 
 const Home = () => {
   return (
@@ -20,7 +20,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <Products />
+        <ProductSection title={"Best Sellers"} />
         <About />
     </>
   )
